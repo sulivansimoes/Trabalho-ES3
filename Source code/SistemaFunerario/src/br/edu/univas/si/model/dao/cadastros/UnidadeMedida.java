@@ -15,7 +15,7 @@ public class UnidadeMedida {
 	
 	public void insertNewUnidadeMedida(UnidadeMedidaTO unidadeMedida)throws UnidadeMedidaException{
 		
-		String sql  = "ISERT INTO UNIDADE_MEDIDA(CODIGO, DESCRICAO)"
+		String sql  = "INSERT INTO UNIDADE_MEDIDA(CODIGO, DESCRICAO)"
 					+ " VALUES(Upper(?), Upper(?) ) ";
 		
 		Connection connection = null;
@@ -53,6 +53,7 @@ public class UnidadeMedida {
 			throw new UnidadeMedidaException("Erro ao alterar "+unidadeMedida.getCodigo()+" - "
 															   +unidadeMedida.getDescricao()
 															   +e);
+			
 		}finally{
 			DBUtil.closeConnection(connection);
 		}

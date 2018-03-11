@@ -8,6 +8,11 @@ public class UnidadeMedidaTO {
 	public UnidadeMedidaTO(){
 	}
 	
+	public UnidadeMedidaTO(String codigo, String descricao){
+		this.codigo = codigo;
+		this.descricao = descricao;
+	}
+	
 	public String getCodigo(){
 		return codigo;
 	}
