@@ -8,14 +8,16 @@ import br.edu.univas.si.model.to.ClienteTO;
 import br.edu.univas.si.model.util.DBUtil;
 
 /**
- * Summary: Classe contém métodos reponsáveis por: incluir, alterar e excluir cadastro de Cliente 
+ * Summary: Classe contém métodos reponsáveis por: incluir, alterar e excluir cadastro de Cliente
+ * @author: Súlivan Simões
+ * @version:1.0 
  */
 
 public class Cliente {
 	
 	public void insertNewCliente(ClienteTO cliente ) throws ClienteException{
 		
-		String sql = "ISERT INTO CLIENTE (TIPO, RAZAO_SOCIAL, NOME_FANTASIA,  CPF_CNPJ, ENDERECO) "
+		String sql = "INSERT INTO CLIENTE (TIPO, RAZAO_SOCIAL, NOME_FANTASIA,  CPF_CNPJ, ENDERECO) "
 				   + " VALUES( Upper(?), Upper(?), Upper(?), ?, Upper(?) )";
 		
 		Connection connection = null;
@@ -31,9 +33,9 @@ public class Cliente {
 				statement.execute();
 		
 		}catch(Exception e){
-			new ClienteException("Erro ao tentar incluir:"+cliente.getCpf_cnpj()+ " - "
-														  +cliente.getNome_fantasia()+" \n "
-														  +e );
+			throw new ClienteException("Erro ao tentar incluir:"+cliente.getCpf_cnpj()+ " - "
+																+cliente.getNome_fantasia()+" \n "
+																+e );
 		}finally{
 			DBUtil.closeConnection(connection);
 		}
@@ -42,7 +44,8 @@ public class Cliente {
 	public void updateCliente(ClienteTO cliente) throws ClienteException{
 	
 		String sql = "UPDATE CLIENTE"
-				   + "	SET RAZAO_SOCIAL = Upper(?), NOME_FANTASIA = Upper(?), ENDERECO = Upper(?)  "; 
+				   + "	SET RAZAO_SOCIAL = Upper(?), NOME_FANTASIA = Upper(?), ENDERECO = Upper(?)  "
+				   + "	WHERE CPF_CNPJ = ?"; 
 				   
 		Connection connection = null;
 		try{
@@ -53,12 +56,14 @@ public class Cliente {
 				statement.setString(2, cliente.getNome_fantasia());
 				statement.setString(3, cliente.getEndereco());
 				
+				statement.setString(4, cliente.getCpf_cnpj());
+				
 				statement.execute();
 				
 		}catch(Exception e){
-			new ClienteException("Erro ao tentar alterar:"+cliente.getCpf_cnpj()+ " - "
-					  									  +cliente.getNome_fantasia()+" \n "
-					  									  +e );
+			throw new ClienteException("Erro ao tentar alterar:"+cliente.getCpf_cnpj()+ " - "
+																 +cliente.getNome_fantasia()+" \n "
+																 +e );
 		}finally{
 			DBUtil.closeConnection(connection);
 		}

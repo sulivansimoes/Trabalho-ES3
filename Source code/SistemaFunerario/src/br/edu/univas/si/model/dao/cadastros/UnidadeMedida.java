@@ -9,6 +9,8 @@ import br.edu.univas.si.model.util.DBUtil;
 
 /**
  * Summary: Classe contém métodos reponsáveis por: incluir, alterar e excluir cadastro de Unidade de Medida 
+ * @author: Súlivan Simões
+ * @version: 1.0
  */
 
 public class UnidadeMedida {
@@ -39,7 +41,8 @@ public class UnidadeMedida {
 	public void updateUnidadeMedida(UnidadeMedidaTO unidadeMedida) throws UnidadeMedidaException{
 		
 		String sql  = "UPDATE UNIDADE_MEDIDA"
-					+ " SET DESCRICAO = Upper(?)";
+					+ " SET DESCRICAO = Upper(?)"
+					+ " WHERE CODIGO = ?";
 	
 		Connection connection = null;
 		try{
@@ -47,12 +50,13 @@ public class UnidadeMedida {
 				PreparedStatement statement = connection.prepareStatement(sql);
 				
 				statement.setString(1, unidadeMedida.getDescricao());
+				statement.setString(2, unidadeMedida.getCodigo());
 				
 				statement.execute();
 		}catch(Exception e){
-			throw new UnidadeMedidaException("Erro ao alterar "+unidadeMedida.getCodigo()+" - "
-															   +unidadeMedida.getDescricao()
-															   +e);
+			throw new UnidadeMedidaException("Erro ao alterar unidade de medida "+unidadeMedida.getCodigo()+" - "
+															   					 +unidadeMedida.getDescricao()
+															   					 +e);
 			
 		}finally{
 			DBUtil.closeConnection(connection);
