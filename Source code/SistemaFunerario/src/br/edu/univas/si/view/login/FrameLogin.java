@@ -3,12 +3,15 @@ package br.edu.univas.si.view.login;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.JOptionPane;
+
 import br.edu.univas.si.listeners.ButtonsListenersConfirmaFecha;
 import br.edu.univas.si.view.componentsdefaults.ButtonsPanelConfirmaFecha;
 import br.edu.univas.si.view.util.MyFrame;
 
 public class FrameLogin extends MyFrame{
 	
+	//TODO finalizar.
 	private static final long serialVersionUID = -5190457170229789597L;
 	
 	PanelLogin panelLogin = null;
@@ -71,6 +74,8 @@ public class FrameLogin extends MyFrame{
 			controllerMenu.initialize();
 			controller.close();
 		}*/
+		
+		JOptionPane.showMessageDialog(this, "Senha ou usuário incorretos!","Aviso!",JOptionPane.WARNING_MESSAGE);
 	}
 
 }

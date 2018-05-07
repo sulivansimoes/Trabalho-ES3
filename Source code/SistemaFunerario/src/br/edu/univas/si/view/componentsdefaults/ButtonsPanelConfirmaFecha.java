@@ -41,7 +41,7 @@ public class ButtonsPanelConfirmaFecha extends JPanel{
 		if(confirmaButton == null){
 			confirmaButton = new JButton("Confirmar");
 			confirmaButton.setFont(new Font("Century",Font.PLAIN,14));
-			confirmaButton.setPreferredSize(new Dimension(100, 40));
+			confirmaButton.setPreferredSize(new Dimension(100, 40));			
 			confirmaButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
