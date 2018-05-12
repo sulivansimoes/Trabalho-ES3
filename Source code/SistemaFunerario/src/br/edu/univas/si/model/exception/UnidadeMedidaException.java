@@ -6,5 +6,5 @@ public class UnidadeMedidaException extends Exception{
 
 	public UnidadeMedidaException(String mensagem){
 		super(mensagem);
-	}
+	}	
 }

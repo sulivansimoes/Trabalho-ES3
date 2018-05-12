@@ -83,4 +83,12 @@ public class ButtonsPanelConfirmaFecha extends JPanel{
 			l.fechaPerformed();
 		}
 	}
+	
+	public void setTitleButtonFecha(String text){
+		getFechaButton().setText(text);
+	}
+	
+	public void setTitleButtonConfirma(String text){
+		getConfirmaButton().setText(text);
+	}
 }

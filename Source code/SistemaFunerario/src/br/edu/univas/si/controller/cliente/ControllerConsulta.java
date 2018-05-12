@@ -1,5 +1,6 @@
 package br.edu.univas.si.controller.cliente;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.Cliente;
 import br.edu.univas.si.model.exception.ClienteException;
 import br.edu.univas.si.view.cadastro.cliente.FramePrincipalCliente;
@@ -9,6 +10,7 @@ public class ControllerConsulta extends ControllerComum{
 		
 	private Cliente model;
 	private FramePrincipalCliente viewPrincipal; 
+	private ControllerError controllerError;
 	
 	public ControllerConsulta(){
 		model = new Cliente();
@@ -23,8 +25,8 @@ public class ControllerConsulta extends ControllerComum{
 		try {
 			return new TableModelCliente(model.consultaClientes() );
 		} catch (ClienteException e) {
-			// TODO fazer tratamento com console log.
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 		
 		return null;
@@ -35,9 +37,16 @@ public class ControllerConsulta extends ControllerComum{
 			TableModelCliente tbl = new TableModelCliente(model.consultaClientesPorConteudo(busca) );
 			super.filterViewPrincipal(viewPrincipal, tbl);
 		} catch (ClienteException e) {
-			// TODO fazer tratamento com console log.
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
 	}
 
 	@Override

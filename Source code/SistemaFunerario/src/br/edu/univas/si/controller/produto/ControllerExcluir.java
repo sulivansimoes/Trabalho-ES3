@@ -1,5 +1,6 @@
 package br.edu.univas.si.controller.produto;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.Produto;
 import br.edu.univas.si.model.exception.ProdutoException;
 import br.edu.univas.si.model.to.ProdutoTO;
@@ -11,6 +12,7 @@ public class ControllerExcluir extends ControllerComum {
 	private Produto model;
 	private FrameExcluir viewExcluir;
 	private FramePrincipalProduto viewPrincipal;
+	private ControllerError controllerError;
 	
 	public ControllerExcluir(FramePrincipalProduto viewPrincipal) {
 		this.viewExcluir = new FrameExcluir(this);
@@ -31,6 +33,7 @@ public class ControllerExcluir extends ControllerComum {
 			super.updateViewPrincipal(viewPrincipal);
 		} catch (ProdutoException e) {
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 	}
 	
@@ -39,5 +42,12 @@ public class ControllerExcluir extends ControllerComum {
 		if(viewExcluir != null){
 			viewExcluir.dispose();
 		}
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
 	}
 }

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.view.util.MyMask;
 
 public class PanelLogin extends JPanel{
@@ -33,7 +34,8 @@ public class PanelLogin extends JPanel{
 	private GridBagConstraints gbcTextFieldSenha;
 	private GridBagConstraints gbclabelUser;
 	private GridBagConstraints gbcLabelSenha;
-	 
+	
+	private ControllerError controllerError;	 
 	
 	public PanelLogin(){
 		
@@ -42,8 +44,8 @@ public class PanelLogin extends JPanel{
 				URL urlImagem = this.getClass().getResource("/br/edu/univas/si/view/images/login.jpg");
 				this.img =  ImageIO.read(urlImagem);
 		} catch (IOException e) {
-			// TODO tratar com console.log
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 		
 		setBorder(new EmptyBorder(10, 20, 20, 20));
@@ -138,5 +140,12 @@ public class PanelLogin extends JPanel{
         gr.drawImage(img, 0, 0 ,this.getWidth(),this.getHeight(),this);  
         gr.dispose();     
     }  	
+    
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
+	}
 }
 

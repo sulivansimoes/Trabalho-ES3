@@ -1,6 +1,7 @@
 package br.edu.univas.si.controller.produto;
 
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.Produto;
 import br.edu.univas.si.model.exception.ProdutoException;
 import br.edu.univas.si.model.to.ProdutoTO;
@@ -12,6 +13,7 @@ public class ControllerIncluir extends ControllerComum {
 	private FramePrincipalProduto viewPrincipal;
 	private FrameIncluir   viewIncluir;
 	private Produto modelProduto;
+	private ControllerError controllerError;
 	
 	
 	public ControllerIncluir(FramePrincipalProduto viewPrincipal){
@@ -30,8 +32,8 @@ public class ControllerIncluir extends ControllerComum {
 			modelProduto.insertNewProduto(produto);
 			super.updateViewPrincipal(viewPrincipal);
 		} catch (ProdutoException e) {
-			// TODO colocar tratamento com log.
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 	}
 			
@@ -40,6 +42,13 @@ public class ControllerIncluir extends ControllerComum {
 		if(viewIncluir != null){
 			viewIncluir.dispose();
 		}
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
 	}
 	
 }

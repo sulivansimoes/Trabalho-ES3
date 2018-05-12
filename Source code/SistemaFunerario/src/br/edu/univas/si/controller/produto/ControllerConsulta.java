@@ -1,5 +1,6 @@
 package br.edu.univas.si.controller.produto;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.Produto;
 import br.edu.univas.si.model.exception.ProdutoException;
 import br.edu.univas.si.view.cadastro.produtoservico.FramePrincipalProduto;
@@ -9,6 +10,7 @@ public class ControllerConsulta extends ControllerComum {
 	
 	Produto model;
 	FramePrincipalProduto viewPrincipal;
+	ControllerError controllerError;
 	
 	public ControllerConsulta(){
 		model = new Produto();
@@ -23,8 +25,8 @@ public class ControllerConsulta extends ControllerComum {
 		try {
 			return new TableModelProduto(model.consultaProdutos() );
 		} catch (ProdutoException e) {
-			// TODO fazer tratamento com console log.
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 		
 		return null;
@@ -36,8 +38,15 @@ public class ControllerConsulta extends ControllerComum {
 			super.filterViewPrincipal(viewPrincipal, tbl);
 		} catch (ProdutoException e) {
 			e.printStackTrace();
+			getControllerError().initialize(e);
+		}			
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
 		}
-				
+		return controllerError;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package br.edu.univas.si.controller.cliente;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.Cliente;
 import br.edu.univas.si.model.exception.ClienteException;
 import br.edu.univas.si.model.to.ClienteTO;
@@ -10,6 +11,7 @@ public class ControllerExcluir extends ControllerComum {
 	private Cliente model;
 	private FrameExcluir viewExcluir;
 	private FramePrincipalCliente viewPrincipal;
+	private ControllerError controllerError;
 	
 	public ControllerExcluir(FramePrincipalCliente viewPrincipal) {
 		this.viewExcluir = new FrameExcluir(this);
@@ -30,6 +32,7 @@ public class ControllerExcluir extends ControllerComum {
 			super.updateViewPrincipal(viewPrincipal);
 		} catch (ClienteException e) {
 			e.printStackTrace();
+			getControllerError().initialize(e);	
 		}
 	}
 	
@@ -37,5 +40,12 @@ public class ControllerExcluir extends ControllerComum {
 		if(viewExcluir != null){
 			viewExcluir.dispose();
 		}
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
 	}
 }

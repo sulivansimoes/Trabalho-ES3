@@ -1,5 +1,6 @@
 package br.edu.univas.si.controller.produto;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.Produto;
 import br.edu.univas.si.model.exception.ProdutoException;
 import br.edu.univas.si.model.to.ProdutoTO;
@@ -11,6 +12,7 @@ public class ControllerAlterar extends ControllerComum{
 	private Produto model;
 	private FrameAlterar viewAlterar;
 	private FramePrincipalProduto viewPrincipal;
+	private ControllerError controllerError;
 	
 	public ControllerAlterar(FramePrincipalProduto viewPrincipal) {
 		this.viewAlterar = new FrameAlterar(this);
@@ -31,6 +33,7 @@ public class ControllerAlterar extends ControllerComum{
 			super.updateViewPrincipal(viewPrincipal);
 		} catch (ProdutoException e) {
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 	}
 	
@@ -39,5 +42,12 @@ public class ControllerAlterar extends ControllerComum{
 		if(viewAlterar != null){
 			viewAlterar.dispose();
 		}
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
 	}
 }

@@ -29,8 +29,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconChart(int width, int height){
 		
-		if(imageIconChart==null){
-			if(imageIconChart==null){				
+		if(imageIconChart==null){				
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/chart.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -39,7 +38,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconChart;
 	}
@@ -52,8 +50,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconLupa(int width, int height){
 		
-		if(imageIconLupa==null){
-			if(imageIconLupa==null){				
+		if(imageIconLupa==null){			
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/search.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -62,7 +59,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconLupa;
 	}
@@ -75,8 +71,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconPencil(int width, int height){
 		
-		if(imageIconPencil==null){
-			if(imageIconPencil==null){				
+		if(imageIconPencil==null){				
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/pencil.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -85,7 +80,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconPencil;
 	}
@@ -98,8 +92,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconLixo(int width, int height){
 		
-		if(imageIconLixo==null){
-			if(imageIconLixo==null){				
+		if(imageIconLixo==null){				
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/lixo.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -108,7 +101,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconLixo;
 	}
@@ -121,8 +113,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconAdd(int width, int height){
 		
-		if(imageIconAdd==null){
-			if(imageIconAdd==null){				
+		if(imageIconAdd==null){				
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/add.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -131,7 +122,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconAdd;
 	}
@@ -144,8 +134,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconExit(int width, int height){
 		
-		if(imageIconExit==null){
-			if(imageIconExit==null){				
+		if(imageIconExit==null){				
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/saida.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -154,7 +143,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconExit;
 	}
@@ -167,8 +155,7 @@ public class MyImageIcons {
 	 */
 	public static final ImageIcon getImageIconPlanilhaAdd(int width, int height){
 		
-		if(imageIconPlanilhaAdd==null){
-			if(imageIconPlanilhaAdd==null){				
+		if(imageIconPlanilhaAdd==null){				
 				try {
 						URL urlImg = MyImageIcons.class.getResource(("/br/edu/univas/si/view/images/window_add.png"));
 						Image image = ImageIO.read(urlImg);;
@@ -177,7 +164,6 @@ public class MyImageIcons {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}				
-			}
 		}
 		return imageIconPlanilhaAdd;
 	}

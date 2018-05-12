@@ -40,4 +40,17 @@ public class MyMessage {
 		}
 		return false;
 	}
+	
+	/**
+	 * Summary: Mostra mensagem informativa para usuário
+	 * @param frameRelative   o quadro (JFrame) no qual o diálogo é exibido; se nulo, o Frame padrão será usado.
+	 * @param mensagem	o conteudo que será exibido para usuário.
+	 */
+	 public static final void informativo(JFrame frameRelative, String text){
+		 		 
+		 JOptionPane.showMessageDialog(frameRelative, 
+				 					   text,
+				 					   "Aviso",
+				 					   JOptionPane.INFORMATION_MESSAGE);
+	 }
 }

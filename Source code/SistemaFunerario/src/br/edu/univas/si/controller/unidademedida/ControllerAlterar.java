@@ -1,5 +1,6 @@
 package br.edu.univas.si.controller.unidademedida;
 
+import br.edu.univas.si.controller.errorlog.ControllerError;
 import br.edu.univas.si.model.dao.cadastros.UnidadeMedida;
 import br.edu.univas.si.model.exception.UnidadeMedidaException;
 import br.edu.univas.si.model.to.UnidadeMedidaTO;
@@ -11,6 +12,7 @@ public class ControllerAlterar extends ControllerComum{
 	private UnidadeMedida modelUnidadeMedida;
 	private FrameAlterarUnidadeMedida viewAlterarUnidadeMedida;
 	private FramePrincipalUnidadeMedida viewPrincipalUnidadeMedida;
+	private ControllerError controllerError;
 	
 	public ControllerAlterar(FramePrincipalUnidadeMedida viewPrincipalUnidadeMedida) {
 		this.viewAlterarUnidadeMedida = new FrameAlterarUnidadeMedida(this);
@@ -31,6 +33,7 @@ public class ControllerAlterar extends ControllerComum{
 			super.updateViewPrincipal(viewPrincipalUnidadeMedida);
 		} catch (UnidadeMedidaException e) {
 			e.printStackTrace();
+			getControllerError().initialize(e);
 		}
 	}
 	
@@ -39,5 +42,12 @@ public class ControllerAlterar extends ControllerComum{
 		if(viewAlterarUnidadeMedida != null){
 			viewAlterarUnidadeMedida.dispose();
 		}
+	}
+	
+	private ControllerError getControllerError() {
+		if(controllerError == null){
+			controllerError = new ControllerError();
+		}
+		return controllerError;
 	}
 }
